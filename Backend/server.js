@@ -102,8 +102,8 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(port, () => {
-  const mailReady = require('./config/mailer').isConfigured();
+  const mailer = require('./config/mailer');
   const storageReady = require('./config/cloudinary').isConfigured();
   console.log(`[${new Date().toISOString()}] INFO CampusShare listening on http://0.0.0.0:${port} env=${process.env.NODE_ENV || 'development'}`);
-  console.log(`[${new Date().toISOString()}] INFO services mail=${mailReady ? 'configured' : 'disabled'} cloudinary=${storageReady ? 'configured' : 'disabled'} db=${process.env.DB_HOST || 'unset'}`);
+  console.log(`[${new Date().toISOString()}] INFO services mail=${mailer.isConfigured() ? mailer.describe() : 'disabled'} cloudinary=${storageReady ? 'configured' : 'disabled'} db=${process.env.DB_HOST || 'unset'}`);
 });
