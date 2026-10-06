@@ -29,18 +29,12 @@ services:
         sync: false
       - key: CLOUDINARY_API_SECRET
         sync: false
-      - key: SMTP_HOST
-        value: smtp-relay.brevo.com
-      - key: SMTP_PORT
-        value: "587"
-      - key: SMTP_SECURE
-        value: "false"
-      - key: SMTP_USER
+      - key: BREVO_API_KEY
         sync: false
-      - key: SMTP_PASSWORD
+      - key: SENDER_EMAIL
         sync: false
-      - key: SMTP_FROM
-        sync: false
+      - key: SENDER_NAME
+        value: CampusShare
       - key: CORS_ORIGIN
         sync: false
       - key: LOG_REQUESTS

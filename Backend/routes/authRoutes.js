@@ -60,8 +60,8 @@ async function issueOtp(email, purpose, payload = null) {
     await mailer.sendOtpEmail(email, code, purpose);
   } catch (error) {
     await db.execute('UPDATE email_otps SET consumed_at = UTC_TIMESTAMP() WHERE id = ?', [otpId]);
-    if (error.code === 'MAIL_NOT_CONFIGURED') throw httpError(503, 'Email verification is not configured. Ask the site administrator to set up SMTP.');
-    throw httpError(502, 'Could not send the verification email. Check the SMTP settings and try again.');
+    if (error.code === 'MAIL_NOT_CONFIGURED') throw httpError(503, 'Email verification is not configured. Ask the site administrator to set up the Brevo API key.');
+    throw httpError(502, 'Could not send the verification email. Check the Brevo settings and try again.');
   }
 }
 

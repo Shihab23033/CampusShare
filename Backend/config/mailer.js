@@ -1,69 +1,44 @@
-const nodemailer = require('nodemailer');
+const { BrevoClient } = require('@getbrevo/brevo');
 
-let transporter;
-
-function smtpConfigured() {
-  return Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD);
-}
-
-function gmailConfigured() {
-  return Boolean(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD);
-}
+let client;
 
 function isConfigured() {
-  return smtpConfigured() || gmailConfigured();
+  return Boolean(process.env.BREVO_API_KEY && process.env.SENDER_EMAIL);
 }
 
 function describe() {
-  if (smtpConfigured()) return process.env.SMTP_HOST;
-  if (gmailConfigured()) return 'smtp.gmail.com';
-  return 'disabled';
+  return isConfigured() ? 'brevo' : 'disabled';
 }
 
-function transportConfig() {
-  if (smtpConfigured()) {
-    const port = Number(process.env.SMTP_PORT || 587);
-    const secure = process.env.SMTP_SECURE ? process.env.SMTP_SECURE === 'true' : port === 465;
-    return {
-      host: process.env.SMTP_HOST,
-      port,
-      secure,
-      requireTLS: !secure,
-      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASSWORD }
-    };
-  }
-  return {
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    requireTLS: true,
-    auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD }
-  };
-}
-
-function fromAddress() {
-  const user = smtpConfigured() ? process.env.SMTP_USER : process.env.GMAIL_USER;
-  return process.env.SMTP_FROM || `CampusShare <${user}>`;
-}
-
-function getTransporter() {
+function getClient() {
   if (!isConfigured()) {
-    const error = new Error('SMTP is not configured. Set SMTP_HOST, SMTP_USER and SMTP_PASSWORD (or GMAIL_USER and GMAIL_APP_PASSWORD).');
+    const error = new Error('Brevo is not configured. Set BREVO_API_KEY and SENDER_EMAIL.');
     error.code = 'MAIL_NOT_CONFIGURED';
     throw error;
   }
-  if (!transporter) {
-    transporter = nodemailer.createTransport(transportConfig());
+  if (!client) {
+    client = new BrevoClient({ apiKey: process.env.BREVO_API_KEY });
   }
-  return transporter;
+  return client;
+}
+
+function escapeHtml(value = '') {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[character]);
+}
+
+function htmlFrom(text) {
+  return `<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#17251f">${escapeHtml(text).replace(/\r?\n/g, '<br>')}</div>`;
 }
 
 async function sendEmail({ to, subject, text }) {
-  return getTransporter().sendMail({
-    from: fromAddress(),
-    to,
+  return getClient().transactionalEmails.sendTransacEmail({
     subject,
-    text
+    textContent: text,
+    htmlContent: htmlFrom(text),
+    sender: { email: process.env.SENDER_EMAIL, name: process.env.SENDER_NAME || 'CampusShare' },
+    to: [{ email: to }]
   });
 }
 
@@ -82,7 +57,7 @@ async function sendNotification(email, subject, text) {
     await sendEmail({ to: email, subject, text });
     return true;
   } catch (error) {
-    console.error('CampusShare notification email failed:', error.code || 'SMTP_ERROR');
+    console.error('CampusShare notification email failed:', error.statusCode || error.code || 'BREVO_ERROR');
     return false;
   }
 }
