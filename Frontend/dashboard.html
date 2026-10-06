@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f4">
+    <title>My dashboard | CampusShare</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
+        rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/app-pages.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="container-xl app-navbar" aria-label="Main navigation">
+            <a class="brand" href="/" aria-label="CampusShare home"><span
+                    class="brand-mark">c</span>campus<span>share</span></a>
+            <div class="app-links"><a href="/">Browse</a><a class="current" href="/dashboard.html">My dashboard</a><a
+                    href="/chat.html">Chats</a><a href="/profile.html">Profile</a><a data-admin-link hidden
+                    href="/admin.html">Admin</a></div>
+            <div class="app-user"><span data-user-name></span><button data-signout type="button">Sign out</button></div>
+        </nav>
+    </header>
+    <main class="container-xl app-main">
+        <div class="page-title-row">
+            <div>
+                <p class="eyebrow">YOUR CAMPUSSHARE</p>
+                <h1>My dashboard</h1>
+                <p class="page-subtitle">Keep track of what you’re sharing and who needs it.</p>
+            </div><a class="btn btn-share" href="#new-listing">＋ Offer an item</a>
+        </div>
+        <p class="notice" data-page-notice role="status" hidden></p>
+        <section class="progress-band" aria-label="Donor progress">
+            <div><span class="progress-label">YOUR GIVING</span><strong><span id="points-count">0</span> points</strong>
+            </div><span class="badge-name" id="badge-name">New Giver</span><a href="/profile.html"
+                class="subtle-link">View profile →</a>
+        </section>
+        <div class="tab-bar" role="tablist" aria-label="Dashboard sections">
+            <button class="tab-button active" id="tab-button-donations" type="button" role="tab" aria-selected="true"
+                aria-controls="tab-donations" data-tab="donations">Donations <span class="tab-count"
+                    id="listing-count">0</span></button>
+            <button class="tab-button" id="tab-button-requests" type="button" role="tab" aria-selected="false"
+                aria-controls="tab-requests" data-tab="requests">Requests <span class="tab-count"
+                    id="request-count">0</span></button>
+            <button class="tab-button" id="tab-button-pitches" type="button" role="tab" aria-selected="false"
+                aria-controls="tab-pitches" data-tab="pitches">Need Pitches <span class="tab-count"
+                    id="pitch-count">0</span></button>
+        </div>
+        <div class="tab-panel" id="tab-donations" role="tabpanel" aria-labelledby="tab-button-donations">
+            <section class="dashboard-section" aria-labelledby="listing-heading">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">WHAT YOU’VE PASSED ON</p>
+                        <h2 id="listing-heading">My listings</h2>
+                    </div>
+                </div>
+                <div class="listing-list" id="my-listings">
+                    <div class="empty-state">Loading your listings…</div>
+                </div>
+            </section>
+            <section class="dashboard-section" id="new-listing" aria-labelledby="new-listing-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">GIVE IT A SECOND LIFE</p>
+                        <h2 id="new-listing-title">Offer an item</h2>
+                    </div>
+                </div>
+                <form class="form-grid" id="listing-form">
+                    <label class="field-span">Item name<input name="title" maxlength="150" required></label>
+                    <label>Category<select name="category" required>
+                            <option value="">Choose category</option>
+                            <option>Books</option>
+                            <option>Electronics</option>
+                            <option>Furniture</option>
+                            <option>Clothing</option>
+                            <option>Lab equipment</option>
+                            <option>Other</option>
+                        </select></label>
+                    <label class="field-span">Description<textarea name="description" rows="4" maxlength="5000"
+                            required></textarea><span class="field-hint">Up to 5,000 characters.</span></label>
+                    <label class="field-span">Photos<input name="images" type="file"
+                            accept="image/jpeg,image/png,image/webp" multiple><span class="field-hint">JPEG, PNG, or
+                            WebP. Up to five images, 5 MB each. Select one at a time - the first photo becomes the
+                            cover; click a photo to change it.</span></label>
+                    <div class="field-span image-preview-list" id="listing-preview" aria-label="Selected listing photos"
+                        hidden></div>
+                    <div class="field-span form-actions"><button class="btn btn-share" type="submit">Send for
+                            review</button><span class="form-feedback" id="listing-feedback" role="status"></span></div>
+                </form>
+            </section>
+        </div>
+        <div class="tab-panel" id="tab-requests" role="tabpanel" aria-labelledby="tab-button-requests" hidden>
+            <section class="dashboard-section" aria-labelledby="requests-heading">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">WHAT YOU’RE LOOKING FOR</p>
+                        <h2 id="requests-heading">My requests</h2>
+                    </div>
+                </div>
+                <div class="request-list" id="my-requests">
+                    <div class="empty-state">Loading your requests…</div>
+                </div>
+            </section>
+        </div>
+        <div class="tab-panel" id="tab-pitches" role="tabpanel" aria-labelledby="tab-button-pitches" hidden>
+            <section class="dashboard-section" aria-labelledby="pitches-heading">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">STUDENTS ASKING FOR YOUR ITEMS</p>
+                        <h2 id="pitches-heading">Need Pitches</h2>
+                    </div>
+                </div>
+                <div class="pitch-list" id="need-pitches">
+                    <div class="empty-state">Loading need pitches…</div>
+                </div>
+            </section>
+        </div>
+        <dialog class="app-dialog edit-dialog" id="edit-dialog" aria-labelledby="edit-title">
+            <form method="dialog" class="dialog-close-form"><button class="dialog-close"
+                    aria-label="Close editor">×</button></form>
+            <p class="eyebrow">UPDATE YOUR LISTING</p>
+            <h2 id="edit-title">Edit item</h2>
+            <p class="dialog-intro">Any change sends the listing back to admin review. Donated items cannot be edited.
+            </p>
+            <form class="form-grid" id="edit-listing-form">
+                <label class="field-span">Item name<input name="title" maxlength="150" required></label>
+                <label>Category<select name="category" required>
+                        <option value="">Choose category</option>
+                        <option>Books</option>
+                        <option>Electronics</option>
+                        <option>Furniture</option>
+                        <option>Clothing</option>
+                        <option>Lab equipment</option>
+                        <option>Other</option>
+                    </select></label>
+                <label class="field-span">Description<textarea name="description" rows="4" maxlength="5000"
+                        required></textarea><span class="field-hint">Up to 5,000 characters.</span></label>
+                <div class="field-span"><span class="field-label">Current photos</span>
+                    <div class="image-preview-list" id="edit-existing-images"></div>
+                </div>
+                <label class="field-span">Replace photos<input name="images" type="file"
+                        accept="image/jpeg,image/png,image/webp" multiple><span class="field-hint">Leave empty to keep
+                        current photos. Select 1-5 images to replace them, up to 5 MB each - the first becomes the new
+                        cover. To keep the photos and only change the cover, click a photo above.</span></label>
+                <div class="field-span image-preview-list" id="edit-preview" aria-label="Selected replacement photos"
+                    hidden></div>
+                <div class="field-span form-actions"><button class="btn btn-share" type="submit">Save changes for
+                        review</button><button class="quiet-button" id="edit-cancel" type="button">Cancel</button><span
+                        class="form-feedback" id="edit-feedback" role="status"></span></div>
+            </form>
+        </dialog>
+    </main>
+    <nav class="mobile-nav app-mobile-nav" aria-label="Mobile navigation">
+        <a href="/"><span aria-hidden="true">⌂</span>Home</a><a href="/#listings"><span
+                aria-hidden="true">⌕</span>Browse</a><a href="#new-listing"><span aria-hidden="true">＋</span>Offer</a><a
+            href="/chat.html"><span aria-hidden="true">▤</span>Chats</a><a href="/profile.html"><span
+                aria-hidden="true">◉</span>Profile</a>
+    </nav>
+    <script src="/js/config.js" defer></script>
+    <script src="/js/site.js" defer></script>
+    <script src="/js/dashboard.js" defer></script>
+</body>
+
+</html>

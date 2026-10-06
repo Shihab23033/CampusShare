@@ -1,0 +1,35 @@
+{
+  "name": "campusshare-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CampusShare Express API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed:demo": "node scripts/seedDemo.js",
+    "admin:promote": "node scripts/promoteAdmin.js",
+    "test:api": "node scripts/smokeTest.js",
+    "db:migrate-bans": "node scripts/migrateUserBan.js",
+    "db:migrate-student-otp": "node scripts/migrateStudentOtp.js",
+    "db:migrate-cover": "node scripts/migrateItemCover.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.11.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-mysql-session": "^3.0.3",
+    "express-session": "^1.18.1",
+    "file-type": "^22.1.1",
+    "multer": "^2.4.0",
+    "mysql2": "^3.24.5",
+    "nodemailer": "^10.0.15"
+  },
+  "overrides": {
+    "mysql2": "^3.24.5"
+  }
+}

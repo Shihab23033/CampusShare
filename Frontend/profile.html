@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f4">
+    <title>My profile | CampusShare</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
+        rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/app-pages.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="container-xl app-navbar" aria-label="Main navigation">
+            <a class="brand" href="/" aria-label="CampusShare home"><span
+                    class="brand-mark">c</span>campus<span>share</span></a>
+            <div class="app-links"><a href="/">Browse</a><a href="/dashboard.html">My dashboard</a><a
+                    href="/chat.html">Chats</a><a class="current" href="/profile.html">Profile</a><a data-admin-link
+                    hidden href="/admin.html">Admin</a></div>
+            <div class="app-user"><span data-user-name></span><button data-signout type="button">Sign out</button></div>
+        </nav>
+    </header>
+    <main class="container-xl app-main profile-main">
+        <div class="page-title-row">
+            <div>
+                <p class="eyebrow">YOUR CAMPUSSHARE</p>
+                <h1>My profile</h1>
+                <p class="page-subtitle">A little about you helps neighbors feel at home.</p>
+            </div><a class="subtle-link" href="/dashboard.html">← Back to dashboard</a>
+        </div>
+        <p class="notice" data-page-notice role="status" hidden></p>
+        <section class="profile-layout">
+            <div class="profile-identity">
+                <div class="profile-avatar-wrap"><span id="avatar-fallback" hidden>S</span><img id="profile-avatar"
+                        src="https://res.cloudinary.com/demo/image/upload/v1/default_avatar.webp"
+                        alt="Profile photo"><label class="avatar-edit" title="Change profile photo">＋<input
+                            id="avatar-input" type="file" accept="image/jpeg,image/png,image/webp"
+                            aria-label="Change profile photo"></label></div>
+                <h2 id="profile-name-display">Student</h2>
+                <p id="profile-email-display"></p>
+                <div class="profile-points"><strong id="profile-points">0</strong><span>Doner points</span></div>
+                <p class="badge-name" id="profile-badge">New Giver</p>
+            </div>
+            <form class="form-grid profile-form" id="profile-form">
+                <div class="field-span">
+                    <p class="eyebrow">PROFILE DETAILS</p>
+                    <h2>Edit your information</h2>
+                </div>
+                <label class="field-span">Name<input name="name" maxlength="100" required></label>
+                <label>Department<input name="department" maxlength="100" required></label>
+                <label>Student ID<input name="studentId" maxlength="50" readonly aria-describedby="student-id-note"><span class="field-hint" id="student-id-note">Student ID is verified at signup and cannot be changed here.</span></label>
+                <label>Email address<input name="email" type="email" readonly aria-describedby="email-note"><span
+                        class="field-hint" id="email-note">Email changes are not supported yet.</span></label>
+                <label>Phone<input name="phone" type="tel" maxlength="20" autocomplete="tel"></label>
+                <label class="field-span">About you<textarea name="bio" rows="5" maxlength="1000"></textarea><span
+                        class="field-hint">Up to 1,000 characters.</span></label>
+                <div class="field-span form-actions"><button class="btn btn-share" type="submit">Save
+                        changes</button><span class="form-feedback" id="profile-feedback" role="status"></span></div>
+            </form>
+        </section>
+    </main>
+    <nav class="mobile-nav app-mobile-nav" aria-label="Mobile navigation">
+        <a href="/"><span aria-hidden="true">⌂</span>Home</a><a href="/#listings"><span
+                aria-hidden="true">⌕</span>Browse</a><a href="/dashboard.html#new-listing"><span
+                aria-hidden="true">＋</span>Offer</a><a href="/chat.html"><span aria-hidden="true">▤</span>Chats</a><a
+            class="mobile-active" href="/profile.html"><span aria-hidden="true">◉</span>Profile</a>
+    </nav>
+    <script src="/js/config.js" defer></script>
+    <script src="/js/site.js" defer></script>
+    <script src="/js/profile.js" defer></script>
+</body>
+
+</html>

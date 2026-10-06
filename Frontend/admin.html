@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <title>Admin dashboard | CampusShare</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/app-pages.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header"><nav class="container-xl app-navbar" aria-label="Main navigation">
+    <a class="brand" href="/" aria-label="CampusShare home"><span class="brand-mark">c</span>campus<span>share</span></a>
+    <div class="app-links"><a href="/">Browse</a><a href="/dashboard.html">Dashboard</a><a href="/chat.html">Chats</a><a href="/profile.html">Profile</a><a class="current" href="/admin.html">Moderation</a></div>
+    <div class="app-user"><span data-user-name></span><button data-signout type="button">Sign out</button></div>
+  </nav></header>
+  <main class="container-xl app-main">
+    <div class="page-title-row"><div><p class="eyebrow">PLATFORM OVERVIEW</p><h1>Admin dashboard</h1><p class="page-subtitle">Review listings, track community activity, and manage student access.</p></div><button class="quiet-button" id="refresh-dashboard" type="button" aria-label="Refresh dashboard">↻ Refresh</button></div>
+    <p class="notice" data-page-notice role="status" hidden></p>
+    <section class="admin-metrics" aria-label="Platform totals">
+      <article class="admin-metric"><span>Total items</span><strong id="metric-total-items">—</strong></article>
+      <article class="admin-metric metric-pending"><span>Pending review</span><strong id="metric-pending">—</strong></article>
+      <article class="admin-metric metric-available"><span>Available</span><strong id="metric-available">—</strong></article>
+      <article class="admin-metric metric-rejected"><span>Rejected</span><strong id="metric-rejected">—</strong></article>
+      <article class="admin-metric"><span>Students</span><strong id="metric-users">—</strong><small id="metric-banned"></small></article>
+      <article class="admin-metric metric-received"><span>Successfully received</span><strong id="metric-received">—</strong></article>
+    </section>
+    <section class="admin-charts" aria-label="Platform graphs">
+      <article class="admin-chart"><div class="section-heading"><div><p class="eyebrow">LISTING INVENTORY</p><h2>Items by status</h2></div></div><div class="chart-wrap"><canvas id="status-chart" role="img" aria-label="Doughnut chart of listing counts by status"></canvas></div></article>
+      <article class="admin-chart"><div class="section-heading"><div><p class="eyebrow">STUDENT OUTCOMES</p><h2>Most items received</h2></div></div><div class="chart-wrap"><canvas id="recipients-chart" role="img" aria-label="Bar chart of students with successfully received items"></canvas></div></article>
+    </section>
+    <section class="admin-section" aria-labelledby="listing-management-heading">
+      <div class="section-heading"><div><p class="eyebrow">MODERATION</p><h2 id="listing-management-heading">Listings</h2></div><span class="section-count" id="listing-count"></span></div>
+      <div class="admin-toolbar"><div class="admin-status-tabs" role="group" aria-label="Filter listings by status">
+        <button class="admin-status-tab active" data-status="all" aria-pressed="true" type="button">All</button><button class="admin-status-tab" data-status="pending" aria-pressed="false" type="button">Pending</button><button class="admin-status-tab" data-status="approved" aria-pressed="false" type="button">Available</button><button class="admin-status-tab" data-status="rejected" aria-pressed="false" type="button">Rejected</button><button class="admin-status-tab" data-status="donated" aria-pressed="false" type="button">Donated</button>
+      </div><label class="admin-search"><span class="visually-hidden">Search listings</span><input id="listing-search" type="search" placeholder="Search title or student"></label></div>
+      <div class="moderation-list" id="moderation-list"><div class="empty-state">Loading listings…</div></div>
+    </section>
+    <section class="admin-section" aria-labelledby="users-heading">
+      <div class="section-heading"><div><p class="eyebrow">ACCOUNT SAFETY</p><h2 id="users-heading">Students</h2></div><span class="section-count" id="users-count"></span></div>
+      <div class="admin-toolbar"><label class="admin-search"><span class="visually-hidden">Search students</span><input id="user-search" type="search" placeholder="Search name or email"></label><label class="admin-user-filter">Account status<select id="user-status-filter"><option value="all">All students</option><option value="active">Active</option><option value="banned">Banned</option></select></label></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th scope="col">Student</th><th scope="col">Received</th><th scope="col">Doner points</th><th scope="col">Account</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead><tbody id="users-list"><tr><td colspan="5" class="empty-state">Loading students…</td></tr></tbody></table></div>
+    </section>
+  </main>
+  <script src="/js/config.js" defer></script>
+  <script src="/js/site.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js" defer></script>
+  <script src="/js/admin.js" defer></script>
+</body>
+</html>

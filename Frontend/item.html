@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <title>Item details | CampusShare</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/app-pages.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header"><nav class="container-xl app-navbar" aria-label="Main navigation">
+    <a class="brand" href="/" aria-label="CampusShare home"><span class="brand-mark">c</span>campus<span>share</span></a>
+    <div class="app-links"><a href="/">Browse</a><a href="/dashboard.html">My dashboard</a><a href="/chat.html">Chats</a><a href="/profile.html">Profile</a><a data-admin-link hidden href="/admin.html">Admin</a></div>
+    <div class="app-user"><span data-user-name></span><button data-signout type="button">Sign out</button></div>
+  </nav></header>
+  <main class="container-xl app-main item-main">
+    <a class="subtle-link back-link" href="/">← Back to listings</a>
+    <p class="notice" data-page-notice role="status" hidden></p>
+    <div id="item-content" class="item-layout" aria-live="polite"><div class="empty-state">Loading item…</div></div>
+  </main>
+  <nav class="mobile-nav app-mobile-nav" aria-label="Mobile navigation">
+    <a href="/"><span aria-hidden="true">⌂</span>Home</a><a href="/#listings"><span aria-hidden="true">⌕</span>Browse</a><a href="/dashboard.html#new-listing"><span aria-hidden="true">＋</span>Offer</a><a href="/chat.html"><span aria-hidden="true">▤</span>Chats</a><a href="/profile.html"><span aria-hidden="true">◉</span>Profile</a>
+  </nav>
+  <script src="/js/config.js" defer></script>
+  <script src="/js/site.js" defer></script>
+  <script src="/js/item-detail.js" defer></script>
+</body>
+</html>

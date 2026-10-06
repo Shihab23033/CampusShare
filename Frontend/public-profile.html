@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <title>Student profile | CampusShare</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/app-pages.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header"><nav class="container-xl app-navbar" aria-label="Main navigation">
+    <a class="brand" href="/" aria-label="CampusShare home"><span class="brand-mark">c</span>campus<span>share</span></a>
+    <div class="app-links"><a href="/">Browse</a><a href="/dashboard.html">Dashboard</a><a href="/chat.html">Chats</a><a href="/profile.html">Profile</a></div>
+    <div class="app-user"><span data-user-name></span><button data-signout type="button" hidden>Sign out</button></div>
+  </nav></header>
+  <main class="container-xl app-main public-profile-main">
+    <a class="subtle-link back-link" href="/">← Back to listings</a>
+    <p class="notice" data-page-notice role="status" hidden></p>
+    <section id="public-profile" aria-live="polite"><div class="empty-state">Loading student profile…</div></section>
+  </main>
+  <script src="/js/config.js" defer></script>
+  <script src="/js/site.js" defer></script>
+  <script src="/js/public-profile.js" defer></script>
+</body>
+</html>

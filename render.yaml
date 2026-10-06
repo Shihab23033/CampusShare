@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: campusshare
+    runtime: node
+    plan: free
+    buildCommand: npm ci --prefix Backend
+    startCommand: node Backend/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: DB_SSL
+        value: "true"
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+      - key: LOG_REQUESTS
+        value: "true"

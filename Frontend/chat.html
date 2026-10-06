@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <title>Chats | CampusShare</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/app-pages.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header"><nav class="container-xl app-navbar" aria-label="Main navigation">
+    <a class="brand" href="/" aria-label="CampusShare home"><span class="brand-mark">c</span>campus<span>share</span></a>
+    <div class="app-links"><a href="/">Browse</a><a href="/dashboard.html">My dashboard</a><a class="current" href="/chat.html">Chats</a><a href="/profile.html">Profile</a><a data-admin-link hidden href="/admin.html">Admin</a></div>
+    <div class="app-user"><span data-user-name></span><button data-signout type="button">Sign out</button></div>
+  </nav></header>
+  <main class="container-xl app-main chat-main">
+    <div class="chat-heading"><div><p class="eyebrow">A CONVERSATION CAN MAKE THE HANDOFF EASIER</p><h1>Chats</h1></div><p class="notice" data-page-notice role="status" hidden></p></div>
+    <section class="chat-layout" id="chat-layout">
+      <aside class="thread-panel" aria-label="Conversations"><h2>Conversations</h2><div id="thread-list"><div class="empty-state">Loading conversations…</div></div></aside>
+      <section class="conversation-panel" aria-label="Conversation">
+        <div class="conversation-header"><button class="chat-back" id="chat-back" type="button" aria-label="Back to conversations">←</button><div><h2 id="conversation-title">Choose a conversation</h2><p id="conversation-subtitle"></p></div></div>
+        <div class="message-list" id="message-list" aria-live="polite"><div class="empty-state">Your private conversations appear here.</div></div>
+        <form class="message-form" id="message-form"><label class="visually-hidden" for="message-input">Write a message</label><textarea id="message-input" name="message" rows="2" maxlength="2000" placeholder="Write a message…" required disabled></textarea><button class="btn btn-share" type="submit" disabled>Send</button></form>
+      </section>
+    </section>
+  </main>
+  <script src="/js/config.js" defer></script>
+  <script src="/js/site.js" defer></script>
+  <script src="/js/chat.js" defer></script>
+</body>
+</html>
