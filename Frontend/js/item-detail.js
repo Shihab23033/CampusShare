@@ -45,7 +45,7 @@ function renderItem(item) {
       <form class="pitch-form" id="pitch-form">
         <label for="need-pitch">Why would this item help you?</label>
         <textarea id="need-pitch" name="needPitch" minlength="10" maxlength="2000" rows="5" required placeholder="Share a little context with the donor"></textarea>
-        <div class="pitch-form-footer"><span class="field-hint">10–2,000 characters</span><button class="btn btn-share" type="submit" id="request-button">Send Need Pitch</button></div>
+        <div class="pitch-form-footer"><span class="field-hint">10–2,000 characters</span><button class="btn btn-share" type="submit" id="request-button">Send Need Request</button></div>
         <p class="form-feedback" id="pitch-feedback" role="status"></p>
       </form>
     </section>`;

@@ -21,14 +21,14 @@ function counterpart(thread) {
 
 function renderThreads() {
   if (!threads.length) {
-    threadList.innerHTML = '<div class="empty-state">No conversations yet. A chat becomes available after someone requests your item or you send a Need Pitch.</div>';
+    threadList.innerHTML = '<div class="empty-state">No conversations yet. A chat becomes available after someone requests your item or you send a Need Request.</div>';
     return;
   }
   threadList.innerHTML = threads.map((thread) => {
     const person = counterpart(thread);
     return `<button class="thread-row${Number(thread.request_id) === Number(activeRequestId) ? ' active' : ''}" data-request-id="${thread.request_id}" type="button">
       <span class="thread-avatar">${person.avatar ? `<img src="${chatApp.escapeHtml(person.avatar)}" alt="">` : chatApp.escapeHtml(person.name.slice(0, 1).toUpperCase())}</span>
-      <span class="thread-copy"><strong>${chatApp.escapeHtml(person.name)}</strong><small>${chatApp.escapeHtml(thread.item_title)}</small><span>${chatApp.escapeHtml(thread.last_message || 'Need Pitch submitted')}</span></span>
+      <span class="thread-copy"><strong>${chatApp.escapeHtml(person.name)}</strong><small>${chatApp.escapeHtml(thread.item_title)}</small><span>${chatApp.escapeHtml(thread.last_message || 'Need Request submitted')}</span></span>
       <span class="thread-status status-${chatApp.escapeHtml(thread.request_status)}">${thread.request_status}</span>
     </button>`;
   }).join('');

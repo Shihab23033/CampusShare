@@ -52,7 +52,7 @@ function renderListings(items) {
         <p>${dashboard.escapeHtml(item.category)} · ${dashboard.formatDate(item.created_at)}</p>
         <p class="manage-description">${dashboard.escapeHtml(item.description)}</p>
       </div>
-      <div class="manage-actions">${item.status !== 'donated' ? `<button class="quiet-button edit-listing" data-item-id="${item.id}" type="button">Edit</button>` : ''}${item.status === 'approved' ? `<button class="quiet-button request-toggle" data-item-id="${item.id}" type="button">Need pitches <span>${item.request_count}</span></button>` : `<span class="section-count">${item.request_count} requests</span>`}</div>
+      <div class="manage-actions">${item.status !== 'donated' ? `<button class="quiet-button edit-listing" data-item-id="${item.id}" type="button">Edit</button>` : ''}${item.status === 'approved' ? `<button class="quiet-button request-toggle" data-item-id="${item.id}" type="button">Need Requests <span>${item.request_count}</span></button>` : `<span class="section-count">${item.request_count} requests</span>`}</div>
       <div class="pitch-panel" id="pitches-${item.id}" hidden></div>
     </article>`).join('');
 

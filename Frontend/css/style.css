@@ -15,7 +15,7 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
 button, input, select, textarea { font: inherit; }
-.site-header { position: sticky; top: 0; z-index: 5; border-bottom: 1px solid rgba(23, 37, 31, .09); background: rgba(247, 248, 244, .94); backdrop-filter: blur(16px); }
+.site-header { position: sticky; top: 0; z-index: 5;padding-left: 5%;padding-right: 5% ; border-bottom: 1px solid rgba(23, 37, 31, .09); background: rgba(247, 248, 244, .94); backdrop-filter: blur(16px); }
 .navbar { min-height: 76px; gap: 30px; }
 .brand { display: inline-flex; align-items: center; gap: 2px; color: var(--ink); font-size: 19px; font-weight: 700; text-decoration: none; letter-spacing: 0; white-space: nowrap; }
 .brand > span:last-child { color: var(--green); }
@@ -24,7 +24,7 @@ button, input, select, textarea { font: inherit; }
 .header-search > span { font-size: 23px; line-height: 1; }
 .header-search input { width: 100%; border: 0; outline: 0; background: transparent; font-size: 13px; }
 .header-search kbd { color: #8b958e; font-size: 11px; }
-.header-actions { display: flex; align-items: center; gap: 18px; }
+.header-actions { display: flex; align-items: center; gap: 18px;}
 .header-actions .nav-link { color: var(--muted); font-size: 13px; }
 .btn-signin { border-radius: 4px; font-size: 13px; }
 .btn-share { border: 1px solid var(--green); border-radius: 4px; background: var(--green); color: #fff; font-size: 13px; font-weight: 600; }
@@ -144,7 +144,7 @@ h1 em { color: var(--green); font-weight: 400; }
 @media (max-width: 370px) {
   .brand { font-size: 15px; }
   .brand-mark { width: 22px; height: 22px; }
-  .header-actions { gap: 1px; }
+  .header-actions { gap: 20px; }
   .header-actions .btn-share { padding-inline: 7px; }
   h1 { font-size: 45px; }
 }

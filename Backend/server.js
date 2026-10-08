@@ -22,7 +22,7 @@ const sessionStore = new MySQLStore({
 sessionStore.on('error', (error) => {
   console.error(`[${new Date().toISOString()}] ERROR session-store ${error.code || error.message}`);
 });
-const port = Number(process.env.PORT || 3000);
+const port = Number(process.env.PORT || 3333);
 const sessionCleanupTimer = setInterval(() => {
   sessionStore.clearExpiredSessions().catch((error) => {
     console.error('Session cleanup skipped:', error.code || error.message);
