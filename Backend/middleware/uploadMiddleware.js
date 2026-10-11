@@ -1,12 +1,12 @@
 const multer = require('multer');
 
-const acceptedImageTypes = new Set(['image/jpeg', 'image/png', 'image/webp']);
+const acceptedImageTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/jpg', 'image/heic']);
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 5 * 1024 * 1024, files: 5 },
   fileFilter(req, file, callback) {
     if (!acceptedImageTypes.has(file.mimetype)) {
-      return callback(new Error('Upload JPEG, PNG, or WebP images only.'));
+      return callback(new Error('Upload JPEG, PNG, heic or WebP images only.'));
     }
     callback(null, true);
   }
